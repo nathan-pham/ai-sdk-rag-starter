@@ -5,7 +5,7 @@ import { DefaultChatTransport } from 'ai';
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
-    chatStore: defaultChatStoreOptions({
+    chatStore: new DefaultChatTransport ({
       api: '/api/chat',
     }),
   });
