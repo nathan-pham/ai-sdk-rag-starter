@@ -7,5 +7,8 @@ export default {
   out: "./lib/db/migrations",
   dbCredentials: {
     url: env.DATABASE_URL,
-  }
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 } satisfies Config;
