@@ -1,14 +1,20 @@
 'use client';
 
-import { useChat } from '@ai-sdk/react';
+import { useChat, createChatStore } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
+
+const chatStore = createChatStore({
+  id: 'default',
+  transport: new DefaultChatTransport({
+    api: '/api/chat',
+  }),
+});
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
-    chatStore: new DefaultChatTransport ({
-      api: '/api/chat',
-    }),
+    chatStore,
   });
+
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       <div className="space-y-4">
